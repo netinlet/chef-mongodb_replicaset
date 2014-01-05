@@ -22,6 +22,8 @@ include_recipe "mongodb::mongo_gem"
 
 ::Chef::Recipe.send(:include, MongoDB::OpsWorksHelper)
 
+Chef::Log.info "Configuring replicaset with OPSWORKS REPLICASET"
+
 # if we are configuring a shard as a replicaset we do nothing in this recipe
 if !node.recipe?("mongodb::shard")
 
