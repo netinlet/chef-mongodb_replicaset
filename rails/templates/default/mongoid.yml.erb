@@ -1,0 +1,16 @@
+<% (['development', 'production'] + [@environment]).uniq.each do |env| -%>
+<%= env %>:
+  sessions:
+    default:
+      database: fortune_app_<%= env %>
+      hosts:
+      <%  replicaset_instances.each do |rs| -%>
+        - <%= rs %>
+      <% end -%>
+      options:
+        safe: true
+        consistency: :eventual
+        max_retries: 30
+        retry_interval: 1
+  options:
+<% end %>

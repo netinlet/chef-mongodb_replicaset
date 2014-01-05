@@ -178,6 +178,7 @@ define :mongodb_instance, :mongodb_type => "mongod" , :action => [:enable, :star
     ruby_block "config_replicaset" do
       block do
         if not replicaset.nil?
+          sleep 5
           MongoDB.configure_replicaset(replicaset, replicaset_name, rs_nodes)
         end
       end
