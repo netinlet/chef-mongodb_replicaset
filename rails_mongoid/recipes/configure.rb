@@ -19,8 +19,9 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
     owner deploy[:user]
 
-    replicaset_name = node['mongodb']['replicaset_name']
-    replicaset_instances = node['opsworks']['layers'][replicaset_name]['instances'].keys.map{|name| "#{name}:27017"}
+    #replicaset_name = node['mongodb']['replicaset_name']
+    #replicaset_instances = node['opsworks']['layers'][replicaset_name]['instances'].keys.map{|name| "#{name}:27017"}
+    replicaset_instances = node['opsworks']['layers']['mongodb']['instances'].map{|server| "#{server['private_ip']}:27017" }
 
     variables(
       :environment => deploy[:rails_env],
