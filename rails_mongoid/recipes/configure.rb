@@ -21,8 +21,8 @@ node[:deploy].each do |application, deploy|
 
     #replicaset_name = node['mongodb']['replicaset_name']
     #replicaset_instances = node['opsworks']['layers'][replicaset_name]['instances'].keys.map{|name| "#{name}:27017"}
-    replicaset_instances = node['opsworks']['layers']['mongodb']['instances'].map{|server| "#{server['private_ip']}:27017" }
 
+    replicaset_instances = node["opsworks"]["layers"]["mongodb"]["instances"].keys.map{|server| "#{node["opsworks"]["layers"]["mongodb"]["instances"][server]["private_ip"]}:27017" }
     variables(
       :environment => deploy[:rails_env],
       :replicaset_instances => replicaset_instances
