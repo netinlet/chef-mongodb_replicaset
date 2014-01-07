@@ -4,7 +4,7 @@
     default:
       database: fortune_app_<%= env %>
       hosts:
-      <%  replicaset_instances.each do |rs| -%>
+      <%  @replicaset_instances.each do |rs| -%>
         - <%= rs %>
       <% end -%>
       options:
