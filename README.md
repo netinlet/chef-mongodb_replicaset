@@ -1,5 +1,5 @@
-chef-mongodb_replicaset
-=======================
+AWS OpsWorks MongoDB Replicaset
+===============================
 
 Chef Recipe for a MongoDB Replicaset running in AWS OpsWorks
 
